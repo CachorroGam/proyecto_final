@@ -1,0 +1,68 @@
+{% extends "users/base_empleado.html" %}
+{% load static %}
+
+{% block content %}
+
+<header class="bg-dark text-white text-center py-5">
+    <div class="container">
+        <h1 class="text-uppercase">Configuración</h1>
+        <p class="lead">Modifica la configuración de tu cuenta aquí.</p>
+    </div>
+</header>
+
+<section class="py-5">
+    <div class="container">
+        {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <h3>Actualizar Información</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{ request.user.username }}">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ request.user.email }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Foto de Perfil Actual</label>
+                {% if request.user.userprofile.profile_picture %}
+                    <img src="{{ request.user.userprofile.profile_picture.url }}" alt="Foto de Perfil" class="img-fluid" style="max-width: 150px;">
+                {% else %}
+                    <p>No tienes una foto de perfil.</p>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="profile_picture" class="form-label">Cambiar Foto de Perfil</label>
+                <input type="file" class="form-control" id="profile_picture" name="profile_picture">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+
+        <h4 class="mt-5">Eliminar Cuenta</h4>
+        <form id="delete-account-form" method="POST" action="{% url 'delete_account' %}">
+            {% csrf_token %}
+            <p>¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.</p>
+            <button type="submit" class="btn btn-danger" id="delete-account-btn">Eliminar Cuenta</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.getElementById('delete-account-btn').addEventListener('click', function(event) {
+        var confirmation = confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');
+        
+        if (!confirmation) {
+            event.preventDefault();
+        }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "users/base_empleado.html" %}
+
+{% block content %}
+{% load widget_tweaks %}
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Registrar Libro Nuevo</h2>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+          <label for="id_titulo" class="form-label">Título</label>
+          {{ form.titulo|add_class:"form-control" }}
+        </div>
+        
+        <div class="mb-3">
+          <label for="id_autor" class="form-label">Autor</label>
+          {{ form.autor|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3">
+          <label for="id_genero" class="form-label">Género</label>
+          {{ form.genero|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3">
+          <label for="id_fecha_publicacion" class="form-label">Fecha de Publicación</label>
+          {{ form.fecha_publicacion|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3">
+          <label for="id_isbn" class="form-label">ISBN</label>
+          {{ form.isbn|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3">
+          <label for="id_portada" class="form-label">Portada</label>
+          {{ form.portada|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3 form-check">
+          <label for="id_disponible" class="form-check-label">Disponible</label>
+          {{ form.disponible|add_class:"form-check-input" }}
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary">Registrar Libro</button>
+          <a href="{% url 'dash_admin' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

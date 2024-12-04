@@ -1,0 +1,129 @@
+{% extends "users/base_empleado.html" %}
+{% load static %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <h1 class="title">Reservas Realizadas</h1>
+        <table class="reservas-table">
+            <thead>
+                <tr>
+                    <th>Nombre del Usuario</th>
+                    <th>Número de Membresía</th>
+                    <th>Título del Libro</th>
+                    <th>Acciones</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for libro in reservas %}
+                    <tr>
+                        <td>{{ libro.reservado_por.get_full_name }}</td>
+                        <td>{{ libro.reservado_por.profile.numero_membresia }}</td>
+                        <td>{{ libro.titulo }}</td>
+                        
+                        <td>
+                            <a href="{% url 'eliminar_reserva' libro.id %}" class="btn-delete" onclick="return confirm('¿Está seguro de eliminar esta reserva?');">Eliminar</a>
+                            <a href="{% url 'registrar_prestamo' libro.id %}" class="btn-prestamo">Préstamo</a>
+                            <a href="{% url 'editar_prestamo' libro.id %}" class="btn-edit">Editar</a> 
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="no-reservas">No hay reservas realizadas.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            text-align: center;
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .reservas-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .reservas-table th, .reservas-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .reservas-table th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .reservas-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .reservas-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .no-reservas {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+            padding: 20px;
+            font-size: 1.1em;
+        }
+
+        .btn-delete, .btn-prestamo, .btn-edit {
+            padding: 5px 10px;
+            margin-right: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #f44336;  
+        }
+
+        .btn-prestamo {
+            background-color: #4CAF50;  
+        }
+
+        .btn-edit {
+            background-color: #FF9800; 
+        }
+
+        .btn-delete:hover {
+            background-color: #e53935;
+        }
+
+        .btn-prestamo:hover {
+            background-color: #45a049;
+        }
+
+        .btn-edit:hover {
+            background-color: #f57c00;
+        }
+    </style>
+</body>
+{% endblock %}

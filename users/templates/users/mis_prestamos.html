@@ -1,0 +1,66 @@
+{% extends "users/base_usuario.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1 class="title">Mis Préstamos</h1>
+    {% if prestamos %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Libro</th>
+                <th>Fecha de Préstamo</th>
+                <th>Fecha de Devolución</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prestamo in prestamos %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ prestamo.libro.titulo }}</td>
+                <td>{{ prestamo.fecha_prestamo|date:"d-m-Y H:i" }}</td>
+                <td>
+                    {% if prestamo.fecha_devolucion %}
+                        {{ prestamo.fecha_devolucion|date:"d-m-Y H:i" }}
+                    {% else %}
+                        No devuelto
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No tienes préstamos registrados.</p>
+    {% endif %}
+</div>
+
+<style>
+    .container {
+        margin: 20px auto;
+        width: 80%;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    .table th, .table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    .table th {
+        background-color: #f2f2f2;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "users/base_usuario.html" %}
+
+{% block content %}
+<h2>Libros Disponibles</h2>
+
+{% if libros %}
+    <ul>
+        {% for libro in libros %}
+            <li>
+                <h3>{{ libro.titulo }} - {{ libro.autor }}</h3>
+                <p>Género: {{ libro.genero }}</p>
+                <p>Descripción: {{ libro.descripcion }}</p>
+                {% if libro.disponible %}
+                    <a href="{% url 'reservar_libro' libro.id %}" class="btn btn-primary">Reservar</a>
+                {% else %}
+                    <span>Este libro ya está reservado. Espera a la devolución.</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay libros disponibles en este momento.</p>
+{% endif %}
+{% endblock %}

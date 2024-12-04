@@ -1,0 +1,111 @@
+{% extends "users/base_empleado.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1 class="title">Historial</h1>
+    
+    <table class="prestamos-table">
+        <thead>
+            <tr>
+                <th>Número de Membresía</th>  
+                <th>Libro</th>
+                <th>Usuario</th>
+                <th>Fecha de Préstamo</th>
+                <th>Fecha de Devolución</th>
+                <th>Estado</th>
+                <th>Autor</th>
+                <th>Email de Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prestamo in prestamos %}
+                <tr>
+                    <td>{{ prestamo.usuario.perfil.numero_membresia }}</td>  
+                    <td>{{ prestamo.libro.titulo }}</td>
+                    <td>{{ prestamo.usuario.get_full_name }}</td>
+                    <td>{{ prestamo.fecha_prestamo|date:"b d, Y, H:i a" }}</td>
+                    <td>
+                        {% if prestamo.fecha_devolucion %}
+                            {{ prestamo.fecha_devolucion|date:"b d, Y, H:i a" }}
+                        {% else %}
+                            No devuelto
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if prestamo.estado == "devuelto" %}
+                            Devuelto
+                        {% else %}
+                            En préstamo
+                        {% endif %}
+                    </td>
+                    <td>{{ prestamo.libro.autor }}</td>
+                    <td>{{ prestamo.usuario.email }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="8" class="no-prestamos">No hay préstamos registrados.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 80%;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .title {
+        text-align: center;
+        color: #333;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .prestamos-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .prestamos-table th, .prestamos-table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    .prestamos-table th {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .prestamos-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .prestamos-table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .no-prestamos {
+        text-align: center;
+        font-style: italic;
+        color: #888;
+        padding: 20px;
+        font-size: 1.1em;
+    }
+</style>
+{% endblock %}

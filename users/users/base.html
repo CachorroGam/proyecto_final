@@ -1,0 +1,285 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+
+<head>
+	<title>BookSaw - Plantilla HTML CSS de Librería Gratis</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="author" content="">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'icomoon/icomoon.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Íconos de Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <title>{% block title %} {% endblock %}</title>
+        
+
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
+
+	<div id="header-wrap">
+
+	<div class="top-content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="social-links">
+						<ul>
+							<li>
+								<a href="#"><i class="icon icon-facebook"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="icon icon-twitter"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="icon icon-youtube-play"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="icon icon-behance-square"></i></a>
+							</li>
+						</ul>
+					</div><!--social-links-->
+				</div>
+				<div class="col-md-6">
+          <div class="right-element">
+              <!-- Botón de Iniciar sesión -->
+              <a href="{% url 'login' %}"class="btn btn-login" id="login-button">
+                  <i class="icon icon-user"></i><span>Iniciar sesión</span>
+              </a>
+      
+              <div class="action-menu">
+                  <div class="search-bar">
+                      <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
+                          <i class="icon icon-search"></i>
+                      </a>
+                      <form role="search" method="get" class="search-box">
+                          <input class="search-field text search-input" placeholder="Buscar" type="search">
+                      </form>
+                  </div>
+              </div>
+          </div><!--top-right-->
+      </div>
+      
+			</div>
+		</div>
+	</div><!--top-content-->
+
+	<header id="header">
+		<div class="container-fluid">
+			<div class="row">
+
+				<div class="col-md-2">
+					<div class="main-logo">
+						<a href="index.html"><img src="images/main-logo.png" alt="logo"></a>
+					</div>
+
+				</div>
+
+				<div class="col-md-10">
+
+					<nav id="navbar">
+						<div class="main-menu stellarnav">
+							<ul class="menu-list">
+								<li class="menu-item active"><a href="#home">Inicio</a></li>
+								<li class="menu-item has-sub">
+									<a href="#pages" class="nav-link">Páginas</a>
+
+									<ul>
+										<li class="active"><a href="index.html">Inicio</a></li>
+										<li><a href="index.html">Sobre Nosotros</a></li>
+										<li><a href="index.html">Estilos</a></li>
+										<li><a href="index.html">Blog</a></li>
+										<li><a href="index.html">Post Único</a></li>
+										<li><a href="index.html">Nuestra Tienda</a></li>
+										<li><a href="index.html">Producto Único</a></li>
+										<li><a href="index.html">Contacto</a></li>
+										<li><a href="index.html">Gracias</a></li>
+									</ul>
+
+								</li>
+								<li class="menu-item"><a href="#featured-books" class="nav-link">Destacados</a></li>
+								<li class="menu-item"><a href="#popular-books" class="nav-link">Populares</a></li>
+								<li class="menu-item"><a href="#special-offer" class="nav-link">Ofertas</a></li>
+								<li class="menu-item"><a href="#latest-blog" class="nav-link">Artículos</a></li>
+								<li class="menu-item"><a href="#download-app" class="nav-link">Descargar App</a></li>
+							</ul>
+
+							<div class="hamburger">
+								<span class="bar"></span>
+								<span class="bar"></span>
+								<span class="bar"></span>
+							</div>
+
+						</div>
+					</nav>
+
+				</div>
+
+			</div>
+		</div>
+	</header>
+
+</div><!--header-wrap-->
+
+
+{% block content %}
+{% endblock %}
+    
+
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-4">
+
+				<div class="footer-item">
+					<div class="company-brand">
+						<img src="images/main-logo.png" alt="logo" class="footer-logo">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis sed ptibus liberolectus
+							nonet psryroin. Amet sed lorem posuere sit iaculis amet, ac urna. Adipiscing fames
+							semper erat ac in suspendisse iaculis.</p>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-2">
+
+				<div class="footer-menu">
+					<h5>Sobre Nosotros</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="#">Visión</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Artículos </a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Carreras</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Términos de servicio</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Donar</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="col-md-2">
+
+				<div class="footer-menu">
+					<h5>Descubre</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="#">Inicio</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Libros</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Autores</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Asignaturas</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Búsqueda Avanzada</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="col-md-2">
+
+				<div class="footer-menu">
+					<h5>Mi Cuenta</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="#">Iniciar sesión</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Mi Perfil</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Mi Carrito</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Mi Librería</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Mi Lista de Deseos</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="col-md-2">
+
+				<div class="footer-menu">
+					<h5>Síguenos</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="#">Facebook</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Twitter</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">YouTube</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Pinterest</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Instagram</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</footer>
+
+<div id="toTop" class="toTop"><i class="fa fa-arrow-up"></i></div>
+
+<!-- JS de Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-JrcwhQ1G2q9wT5I2bGvTkG+vDlmTe60y40ntTYBrN9r3smMZcp5CkAfBrt4kwuV0z"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-wmPpOSfmo4fgDFwVGEcOGfgjlIH9ckOt0qF+Uu06/WGVcFfv3Eotbf0tczC9mNhJ"
+	crossorigin="anonymous"></script>
+
+<!-- JS de Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- JS Personalizado -->
+<script type="text/javascript" src="{% static 'js/stellar.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+{% extends "users/base.html" %}
+{% block title %}Página de Perfil{% endblock title %}
+{% block content %}
+    <div class="row my-3 p-3">
+        <!-- Imagen de perfil redondeada con cursor como puntero -->
+        <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer;"/>
+    </div>
+    
+    {% if user_form.errors %}
+        <!-- Mostrar los errores de validación del formulario -->
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    
+    <div class="form-content">
+        <!-- Formulario de perfil -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="small mb-1">Nombre de usuario:</label>
+                            {{ user_form.username }} <!-- Campo de nombre de usuario -->
+                        <label class="small mb-1">Correo electrónico:</label>
+                            {{ user_form.email }} <!-- Campo de correo electrónico -->
+                    </div>
+                    
+                    <div class="form-group">
+                        <!-- Enlace para cambiar la contraseña -->
+                        <a href="{% url 'password_change' %}">Cambiar contraseña</a>
+                        <hr>
+                        <label class="small mb-1">Cambiar Avatar:</label>
+                        {{ profile_form.avatar }} <!-- Campo para cambiar el avatar -->
+                    </div>
+                    
+                    <label class="small mb-1">Biografía:</label>
+                    {{ profile_form.bio }} <!-- Campo para biografía -->
+                </div>
+            </div>
+            <br><br>
+            <!-- Botones para guardar los cambios o resetear el formulario -->
+            <button type="submit" class="btn btn-dark btn-lg">Guardar cambios</button>
+            <button type="reset" class="btn btn-dark btn-lg">Resetear</button>
+        </form>
+    </div>
+{% endblock content %}

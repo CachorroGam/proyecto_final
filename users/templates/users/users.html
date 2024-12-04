@@ -1,0 +1,165 @@
+{% extends "users/base_admin.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Usuarios</h1>
+
+        <h2>Administradores</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Tipo de Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in all_users %}
+                    {% for group in user.groups.all %}
+                        {% if group.name == "Administrador" %}
+                            <tr>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>Administrador</td>
+                                <td>
+                                    <a href="{% url 'editar_usuario' user.id %}" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="{% url 'eliminar_usuario' user.id %}" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de eliminar este usuario?')">Eliminar</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% empty %}
+                        <tr><td colspan="4" class="text-center text-muted">No hay administradores disponibles.</td></tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Empleados</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Tipo de Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in all_users %}
+                    {% for group in user.groups.all %}
+                        {% if group.name == "Empleado" %}
+                            <tr>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>Empleado</td>
+                                <td>
+                                    <a href="{% url 'editar_usuario' user.id %}" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="{% url 'eliminar_usuario' user.id %}" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de eliminar este usuario?')">Eliminar</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% empty %}
+                        <tr><td colspan="4" class="text-center text-muted">No hay empleados disponibles.</td></tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Usuarios</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Tipo de Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in all_users %}
+                    {% for group in user.groups.all %}
+                        {% if group.name == "Usuario" %}
+                            <tr>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>Usuario</td>
+                                <td>
+                                    <a href="{% url 'editar_usuario' user.id %}" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="{% url 'eliminar_usuario' user.id %}" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de eliminar este usuario?')">Eliminar</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% empty %}
+                        <tr><td colspan="4" class="text-center text-muted">No hay usuarios disponibles.</td></tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block extra_head %}
+    <style>
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th {
+            background-color: #ffffff;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ddd; 
+        }
+
+        .table td {
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+            background-color: #ffffff !important; 
+            border: 1px solid #ddd; 
+        }
+
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .table-striped tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+
+        .text-muted {
+            font-style: italic;
+            color: #888;
+        }
+
+        .btn-sm {
+            margin: 0 5px;
+        }
+    </style>
+{% endblock %}

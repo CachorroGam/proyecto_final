@@ -1,0 +1,50 @@
+{% extends "users/base.html" %}
+
+{% block content %}
+<section style="background-color: white;">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-1 justify-content-center">
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <div class="image-container" style="height: 250px; display: flex; justify-content: center; align-items: center;">
+                        {% if libro.portada %}
+                            <img class="card-img-top" src="{{ libro.portada.url }}" alt="Portada de {{ libro.titulo }}" style="object-fit: contain; max-height: 100%; max-width: 100%;" />
+                        {% else %}
+                            <img class="card-img-top" src="https://via.placeholder.com/150" alt="Portada de {{ libro.titulo }}" style="object-fit: contain; max-height: 100%; max-width: 100%;" />
+                        {% endif %}
+                    </div>
+                    
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <h5 class="fw-bolder">{{ libro.titulo }}</h5>
+                            <p class="text-muted">Autor: {{ libro.autor }}</p>
+                            <p class="text-muted">Género: {{ libro.genero }}</p>
+                            <p class="text-muted">Fecha de Publicación: {{ libro.fecha_publicacion|date:"d/m/Y" }}</p>
+                            <p class="text-muted">ISBN: {{ libro.isbn }}</p>
+
+                            
+                            <p class="text-muted">
+                                Estado: 
+                                {% if libro.disponible %}
+                                    <span class="text-success">Disponible</span>
+                                {% else %}
+                                    <span class="text-danger">No disponible</span>
+                                {% endif %}
+                            </p>
+
+
+
+                            <p class="text-muted">Descripción: {{ libro.descripcion }}</p>
+
+                            <form action="{% url 'login' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success">Reservar este libro</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

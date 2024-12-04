@@ -1,0 +1,104 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h1 class="display-4 text-primary font-weight-bold">Contacto</h1>
+                <p class="lead text-muted">Estamos aquí para ayudarte. Contáctanos usando cualquiera de los métodos que prefieras.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm p-4">
+                    <h3 class="gris-suave font-weight-bold"><i class="fas fa-map-marker-alt"></i> Dirección:</h3>
+                    <p class="text-muted" style="font-weight: normal;">Totonicapán, Guatemala</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm p-4">
+                    <h3 class="gris-suave font-weight-bold"><i class="fas fa-phone-alt"></i> Teléfono:</h3>
+                    <p class="text-muted" style="font-weight: normal;">+502 3827 2930</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm p-4">
+                    <h3 class="gris-suave font-weight-bold"><i class="fas fa-envelope"></i> Correo Electrónico:</h3>
+                    <p class="text-muted" style="font-weight: normal;">pruebapagbiblio@gmail.com</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm p-4">
+                    <h3 class="gris-suave font-weight-bold"><i class="fas fa-share-alt"></i> Redes Sociales:</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="https://facebook.com/" target="_blank" class="text-decoration-none text-muted social-link"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="https://twitter.com/" target="_blank" class="text-decoration-none text-muted social-link"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="https://instagram.com/" target="_blank" class="text-decoration-none text-muted social-link"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm p-4">
+                    <h3 class="gris-suave font-weight-bold"><i class="fas fa-clock"></i> Horario de Atención:</h3>
+                    <p class="text-muted" style="font-weight: normal;">Lunes a Viernes: 8:00 AM - 5:00 PM</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card shadow-sm p-4">
+                    <h3 class="gris-suave font-weight-bold"><i class="fas fa-map"></i> Ubicación en el Mapa:</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d19914.2641077893!2d-91.3695731!3d14.9101992!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858ea5ffc8826b7d%3A0x1112c3b0dd632acb!2sINTECAP!5e0!3m2!1ses!2sgt!4v1630624687070!5m2!1ses!2sgt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <a href="https://maps.app.goo.gl/WthGWnB6K8QH2A2M7" target="_blank" class="btn btn-primary">Ver en Google Maps</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .social-link:hover {
+            color: #007bff;
+            text-decoration: underline;
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+
+        .text-muted {
+            color: #6c757d;
+        }
+
+        iframe {
+            border-radius: 8px;
+            border: none;
+        }
+
+        .embed-responsive {
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .gris-suave {
+            color: #6c757d;
+        }
+
+    </style>
+{% endblock %}

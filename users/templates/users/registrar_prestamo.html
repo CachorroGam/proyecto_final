@@ -1,0 +1,39 @@
+{% extends "users/base_Admin.html" %}
+{% block content %}
+<body>
+    <div class="container">
+        <h1>Registrar Préstamo</h1>
+        <p><strong>Libro:</strong> {{ libro.titulo }}</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-submit">Registrar Préstamo</button>
+        </form>
+    </div>
+
+    <style>
+        .container {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+{% endblock %}
